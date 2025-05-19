@@ -24,7 +24,7 @@ wss.on('connection', (ws) => {
 
       // Mocked AI answer & records (you can extend logic here)
       const response: AIResponse = {
-        answer: `Based on your description: "${prompt}", we recommend inspecting the hydraulic pump and pressure lines.`,
+        answer: `To fix the issue with "${prompt}", check the condition of ABC, replace if needed and see the maintenance records.`,
         maintenanceRecords: [
           {
             id: 1,
