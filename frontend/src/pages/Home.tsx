@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
-  const handle = () => navigate('/chat-assistance')
+  const handle = () => navigate('/chat')
   return (
     <div className="home" style={{ fontFamily: 'Arial, sans-serif' }}>
       <div className='text-content'>
