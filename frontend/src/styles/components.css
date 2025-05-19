@@ -1,0 +1,33 @@
+/* banner*/
+.banner {
+    background-color: #7e1f89;
+    width: 100%;
+    text-decoration: underline;
+    font-weight: 700;
+  }
+  .header {
+    height: 78px;
+  }
+  .logo {
+    cursor: pointer;
+  }
+  .menu {
+    background-color: #0c0243;
+    height: 60px;
+  }
+
+  /* buttons */
+
+  .custom-primary-btn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 24px;
+    font-size: 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .custom-primary-btn:hover {
+    background-color: #7e1f89;;
+  }
