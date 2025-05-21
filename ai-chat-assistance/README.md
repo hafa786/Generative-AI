@@ -26,7 +26,7 @@ Install npm required packages
 Note: Before this start server, go to the root frontend folder. Create a `.env` file and add the following required environment variable to inject in the application.
 
 
-and before run `npm start` ensure backend is working perfectly on mentioned `REACT_APP_BACKEND_API_URL`.
+and before run `npm start` ensure backend is working perfectly on mentioned `REACT_APP_BACKEND_WEBSOCKET_URL`.
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -52,27 +52,25 @@ It ensures uniform code style across the project.
 ├── node_moodules
 ├── src: # source code
     └── components # list of React components
-        ├── Buttons.tsx
+        ├── AIMessage.tsx
         ├── Footer.tsx
         ├── Header.tsx
         ├── Menu.tsx
-        ├── ModalPopup.tsx
-        ├── PopupContent.tsx
-        ├── TemperatureMap.tsx
-    └── Images # all media files especially image
-    └── models # might contain the modals object
+        ├── Buttons.tsx
+        ├── Chat.tsx
+        ├── MaintenanceRecordCard.tsx
+        ├── ChatAssistanceForm.tsx
+    └── dist # all media files especially image
+    └── hooks # contains all hooks
     └── pages # list of all the pages
     └── types # contain all the type of main object
     └── server.ts # Main server file to list the endpoints
     └── App.tsx # main app component (app entry points)
-├── public # Temprary store json file
+├── public # Temprary store image file
 ├── .gitignore # it ignore file
 ├── package.json # Project metadata and dependencies
 ├── tsconfig.json # TypeScript configuration
-├── docker-compose.yml # Docker script file
 ├── Dockerfile # Docker script file
-├── .prettierrc # prettier rc file
-├── .prettierignore # prettier ignore code file
 ```
 
 ## Backend - Nodejs + Typescript + WebSocket
@@ -87,28 +85,21 @@ Install npm required packages
 #### `npm run dev`
 
 It will run the app in the development mode.\
-Open [http://localhost:5000](http://localhost:5000) to view it.
+Open [ws://localhost:8080](ws://localhost:8080) to view it.
 
 ### Structure
 
 ```
 ├── node_moodules
 ├── src: # source code
-    └── controllers # list of controllers
-        ├── fileController.ts
-    └── middleware # middleware typescript functions to act bridge betwen controller and routes
-        └── multer.ts # use multer library to filter and store json file temprary
-    └── models # might contain the modals object
-    └── routes # contains the various routes
-        ├── fileRoutes.ts # contain the route configure with controller
-    └── services # services to use inside application controller
+    └── data # contains all the data files.
+    └── helpers # contains all the helper functions
+        ├── getMockedData.ts # return the mocked data
     └── types # contains data types files
-    └── server.ts # main server file to list the endpoints
-├── uploads # Temprary store json file
+    ├── websocket-api-server.ts # main WebSocketServer typescript file
 ├── .gitignore # it ignore file
 ├── package.json #pProject metadata and dependencies
 ├── tsconfig.json # TypeScript configuration
-├── docker-compose.yml # Docker script file
 ├── Dockerfile # Docker script file
 
 ```
@@ -118,13 +109,12 @@ Open [http://localhost:5000](http://localhost:5000) to view it.
 
 Before deploying the backend application through dockerization, be ensured that you have already installed docker.
 
-`docker compose up`
+in the main root folder, run the following
 
-It will run the app through docker using docker componse in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it.
+`./run.sh`
 
-Note: before run the docker compose command, be assured that you have created `.env` file and add the following required environment variable mentioned in npm start locally section.
-
+It will run the app through docker using docker componse in the development mode. 
+Open [http://localhost:3000](http://localhost:3000) to view it and backend websocket is running on [ws://localhost:8080](ws://localhost:8080).
 
 
 ## Future scopes
@@ -132,9 +122,8 @@ Note: before run the docker compose command, be assured that you have created `.
 Due to limitation of time and other factors, there are many improvement or addition can be made to this project to increase scope of the project. For example:
 
 - <b>Testing</b>: In future, adding tests to test the each of the UI components using `testing-library/react`
-- <b>Use single docker script file</b>: If i got a chance i can write one file to run the both docker container once.
 - <b>Improve code quality</b>: In future, adding eslint to the UI components would be plus to handle many future risks.
 - <b>State management</b>: In future, adding React Context API + useReducer or Redux Toolkit.
 - <b>Security</b>: Add authorization to access the endpoints by AWS Access token etc.
 - <b>Deploy AWS</b>: Deploy by writing cdk constructs.
-- <b>Styling library</b>: In future, add some stylish .
+- <b>Styling library</b>: In future, add some stylish and prettier.
