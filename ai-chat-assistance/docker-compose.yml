@@ -1,24 +1,20 @@
+version: '3.8'
+
 services:
   frontend:
-    container_name: frontend-app 
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: ./frontend
     ports:
       - "3000:3000"
-    env_file:
-      - .env
     volumes:
-      - .:/app
-      - /app/node_modules
-  
+      - ./frontend:/app
+    environment:
+      - NODE_ENV=development
+
   backend:
-    container_name: backend-typescript-api
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: ./backend
     ports:
-      - "5000:5000"
+      - "8080:8080"
     volumes:
-     - .:/app
-     - /app/node_modules
+      - ./backend:/app
+    environment:
+      - NODE_ENV=development
