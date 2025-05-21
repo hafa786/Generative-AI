@@ -8,6 +8,7 @@ import MaintenanceRecordCard from '../components/MaintenanceRecordCard';
 import ChatAssistanceForm from '../components/ChatAssistanceForm';
 import AIMessage from '../components/AIMessage';
 
+const backendApiUrl = process.env.REACT_APP_BACKEND_WEBSOCKET_URL || '';
 const Chat: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState<string>('');
@@ -17,7 +18,7 @@ const Chat: React.FC = () => {
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const socket = new WebSocket('ws://localhost:8080'); // Change to your actual backend URL
+    const socket = new WebSocket(backendApiUrl); // Change to your actual backend URL
     socket.onopen = () => console.log('WebSocket connected');
     socket.onmessage = (event) => {
       const data: ApiResponse = JSON.parse(event.data);
@@ -62,7 +63,7 @@ const Chat: React.FC = () => {
             ))}
             <div ref={messagesEndRef} />
           </div>
-          <ChatAssistanceForm submitHandler={submitForm} inputHandler={(e:React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value)} inputValue={input}  />
+          <ChatAssistanceForm submitHandler={submitForm} inputHandler={(e: React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value)} inputValue={input} />
         </Col>
         <Col md={4}>
           <MaintenanceRecordCard maintenanceRecords={maintenanceRecords} searchKey={problem} />
