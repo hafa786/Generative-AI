@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "ts-node backend-api-server.ts"
+    "dev": "ts-node src/websocket-api-server.ts"
   },
   "dependencies": {
     "@types/ws": "^8.18.1",
